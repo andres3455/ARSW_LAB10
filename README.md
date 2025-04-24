@@ -57,6 +57,13 @@ NOTA: Existe un error al momento de desplegar, y es debido a que debemos cambiar
 
 3. Despliegue la Function de Fibonacci a Azure usando Visual Studio Code. La primera vez que lo haga se le va a pedir autenticarse, siga las instrucciones.
 
+### Desplegamos la aplicación 
+
+![Captura de pantalla 2025-04-24 084430](https://github.com/user-attachments/assets/c3f20ebb-b9bc-4bf4-b905-53bb44735b14)
+
+![image](https://github.com/user-attachments/assets/9499bcfa-2934-4e91-a7e3-17ec75cc1b5a)
+
+
 ![](images/part3/part3-deploy-function-1.png)
 
 ![](images/part3/part3-deploy-function-2.png)
@@ -64,6 +71,15 @@ NOTA: Existe un error al momento de desplegar, y es debido a que debemos cambiar
 4. Dirijase al portal de Azure y pruebe la function.
 
 ![](images/part3/part3-test-function.png)
+
+### Portal De Azure
+
+![Captura de pantalla 2025-04-24 091045](https://github.com/user-attachments/assets/beeaa5fb-6c31-4a0e-9f0c-3c8906c35ada)
+
+![Captura de pantalla 2025-04-24 091118](https://github.com/user-attachments/assets/4191deb0-07b9-49c4-913b-194769dcb45d)
+
+![Captura de pantalla 2025-04-24 091725](https://github.com/user-attachments/assets/af2ce111-5a99-42f5-b7c7-ccef6b6d5df7)
+
 
 5. Modifique la coleción de POSTMAN con NEWMAN de tal forma que pueda enviar 10 peticiones concurrentes. Verifique los resultados y presente un informe.
 
