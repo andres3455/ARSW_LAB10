@@ -3,6 +3,10 @@
 
 ## Escalamiento en Azure con Maquinas Virtuales, Sacale Sets y Service Plans
 
+### Desarrollado por:
+* Andrés Felipe Rodíguez Chaparro
+* Santiago Guerra Penagos
+
 ### Dependencias
 * Cree una cuenta gratuita dentro de Azure. Para hacerlo puede guiarse de esta [documentación](https://azure.microsoft.com/es-es/free/students/). Al hacerlo usted contará con $100 USD para gastar durante 12 meses.
 Antes de iniciar con el laboratorio, revise la siguiente documentación sobre las [Azure Functions](https://www.c-sharpcorner.com/article/an-overview-of-azure-functions/)
@@ -22,9 +26,34 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
 ![](images/part3/part3-function-configii.png)
 
+### Creación de la Function App
+
+![Captura de pantalla 2025-04-24 084212](https://github.com/user-attachments/assets/ca4522a9-0a9c-4b34-a893-c9c33eb2ee64)
+
+
 2. Instale la extensión de **Azure Functions** para Visual Studio Code.
 
 ![](images/part3/part3-install-extension.png)
+
+### Instalación de la extensión y los paquetes necesarios 
+
+![Captura de pantalla 2025-04-24 082817](https://github.com/user-attachments/assets/d097e90c-d61c-4eb4-a569-e9e52b50106f)
+
+```
+npm install -g azure-functions-core-tools@4 --unsafe-perm true
+```
+NOTA: Existe un error al momento de desplegar, y es debido a que debemos cambiar la version del ExtensionBundle en el archivo HOST.JS, asi deberia quedar:
+
+``` javascript
+{
+  "version": "2.0",
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[2.6.1, 3.0.0)"
+  }
+}
+
+```
 
 3. Despliegue la Function de Fibonacci a Azure usando Visual Studio Code. La primera vez que lo haga se le va a pedir autenticarse, siga las instrucciones.
 
