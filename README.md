@@ -88,10 +88,47 @@ NOTA: Existe un error al momento de desplegar, y es debido a que debemos cambiar
 **Preguntas**
 
 * ¿Qué es un Azure Function?
+  * Respuesta: Azure Functions es un servicio en la nube sin servidor que permite ejecutar aplicaciones
+    bajo demanda, gestionando la infraestructura automáticamente.
 * ¿Qué es serverless?
+  * Respuesta: Es un modelo de computación en la nube que permite desarrollar y ejecutar aplicaciones sin
+    gestionar la infraestructura subyacente, su administración, incluyendo software y sistemas operativos
+    es gestionado por el proveedor de la nube
 * ¿Qué es el runtime y que implica seleccionarlo al momento de crear el Function App?
+  * Respuesta: El runtime es el entorno de ejecución en el que se ejecutarán las funciones. Elegir un
+    runtime implica determinar el lenguaje de programación y el entorno operativo de la Function App. Esta
+    selección es clave porque cambiar el runtime posteriormente es complejo y puede requerir una
+    reconfiguración significativa.
 * ¿Por qué es necesario crear un Storage Account de la mano de un Function App?
+  * Respuesta: En Azure, toda Function App necesita un Storage Account para poder funcionar correctamente,
+    y no es opcional.Se usa para gestionar triggers, reintentos y archivos temporales, todo esto debido a
+    que Azure Functions es serverless.
 * ¿Cuáles son los tipos de planes para un Function App?, ¿En qué se diferencias?, mencione ventajas y desventajas de cada uno de ellos.
+  * Respuesta:
+  * Plan de Consumo
+    * Caracteristicas: Escalado automatico, Pago por uso
+    * Ventajas: Economico, escalabilidad hasta 0, ideal para funciones "event-driven"
+    * Desventajas: Tiempo de arranque lento, Limite de tiempo de ejecución, no permite conexiones
+      persistentes
+  * Plan Premium
+    * Caracteristicas: Escalado automatico mas controlado, Tiempo de ejecución ilimitado
+    * Ventajas: Ideal para funciones de alto rendimiento, permite largas ejecuciones
+    * Desventajas: Mas costoso que el plan anterior, requiere asignar instancias minimas y maximas
+  * App Service Plan
+    * Caracterisiticas: Uso de las mismas intancias que nuestros Web Apps, NO escala automaticamente
+    * Ventajas: Podemos compartir infraestructura por defecto si ya usamos App Services, ideal para
+      escenearios donde el consumo es constante
+    * Desventajas: No escala a cero, pago por usar las las instancias todo el tiempo, asi no esten en uso 
 * ¿Por qué la memoization falla o no funciona de forma correcta?
+  * Respuesta: La memorización puede fallar debido a problemas de recursividad y al almacenamiento
+    ineficiente de valores. Con datos grandes, el consumo de memoria aumenta significativamente, saturando
+    los recursos disponibles y afectando el rendimiento.
 * ¿Cómo funciona el sistema de facturación de las Function App?
+  * Respuesta: Depende del plan que usemos, por ejemplo:
+    * Plan de consumo: Se cobra por las cantidad de ejecuciones, por el tiempo total de ejecución y la
+      memoria utilizada
+    * Plan premium: Se cobra por Instancias reservadas, por el tiempo de ejcuciñon y el soporte para las
+      funciones mas pesadas
+    * App Service Plan: Pagamos por el tamaño y el numero de instancias del App Service
 * Informe
+* Correspondiente al punto 6
