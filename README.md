@@ -83,7 +83,98 @@ NOTA: Existe un error al momento de desplegar, y es debido a que debemos cambiar
 
 5. Modifique la coleción de POSTMAN con NEWMAN de tal forma que pueda enviar 10 peticiones concurrentes. Verifique los resultados y presente un informe.
 
+
+
+## Pruebas de Carga con Newman
+
+Se realizaron pruebas de carga usando Newman para ejecutar 10 peticiones secuenciales a la Azure Function.
+
+### Configuración de la prueba
+- Número de iteraciones: 10
+- Tipo de petición: POST
+- Endpoint: https://functionprojectfibonnaci.azurewebsites.net/api/Fibonacci
+- Tamaño de respuesta: 209.23KB por petición
+
+### Resultados
+![](/images/newman.png)
+#### Tiempos de Respuesta
+- Tiempo promedio: 12.6s
+- Tiempo mínimo: 12.3s
+- Tiempo máximo: 13.5s
+- Desviación estándar: 418ms
+
+#### Estadísticas de Ejecución
+- Iteraciones completadas: 10/10 (100% exitosas)
+- Peticiones completadas: 10/10 (100% exitosas)
+- Duración total de la prueba: 2m 7s
+- Datos totales recibidos: 2.09MB
+
+#### Análisis de Resultados
+- Todas las peticiones fueron exitosas (código 200 OK)
+- Los tiempos de respuesta fueron consistentes, con una variación máxima de 1.2s entre la petición más rápida y la más lenta
+- No se presentaron errores durante la ejecución
+- El tamaño de respuesta se mantuvo constante en todas las peticiones
+
+---
 6. Cree una nueva Function que resuleva el problema de Fibonacci pero esta vez utilice un enfoque recursivo con memoization. Pruebe la función varias veces, después no haga nada por al menos 5 minutos. Pruebe la función de nuevo con los valores anteriores. ¿Cuál es el comportamiento?.
+al ejecutar
+
+## Pruebas de Rendimiento - Implementación con Memoization
+
+### Configuración de Pruebas
+Se realizaron pruebas comparativas entre la implementación anterior y la nueva implementación con memoization, ejecutando peticiones antes y después de un periodo de inactividad.
+
+### Resultados de la Primera Implementación (Sin Memoization)
+- Número de iteraciones: 10
+- Tiempo promedio de respuesta: 12.6s
+- Tiempo mínimo: 12.3s
+- Tiempo máximo: 13.5s
+- Tamaño de respuesta: 209.23KB
+- Duración total: 2m 7s
+
+### Resultados de la Segunda Implementación (Con Memoization)
+#### Primera Ejecución
+- Tiempo de respuesta: 682ms
+- Tamaño de respuesta: 261B
+- Estado: 200 OK
+
+#### Segunda Ejecución (Después de Cache)
+- Tiempo de respuesta: 604ms
+- Tamaño de respuesta: 263B
+- Estado: 200 OK
+
+### Análisis Comparativo
+![](/images/newman%20mem.png)
+#### Mejoras Observadas
+1. **Tiempo de Respuesta**
+   - Implementación original: ~12.6 segundos
+   - Implementación con memoization: ~600-680ms
+   - Mejora: Reducción del 95% en tiempo de respuesta
+
+2. **Tamaño de Respuesta**
+   - Implementación original: 209.23KB
+   - Implementación con memoization: ~262B
+   - Mejora: Reducción significativa en el tamaño de la respuesta
+
+3. **Consistencia**
+   - La variación en tiempos de respuesta es menor en la implementación con memoization
+   - Diferencia entre ejecuciones: solo 78ms (682ms vs 604ms)
+
+#### Comportamiento de Caché
+- Se observa una ligera mejora en el tiempo de respuesta en la segunda ejecución (604ms vs 682ms)
+- La función mantiene su estado "caliente" (warm) entre ejecuciones cercanas
+- El tamaño de respuesta se mantiene consistente
+
+### Conclusiones
+1. La implementación con memoization muestra una mejora sustancial en rendimiento:
+   - Menor consumo de recursos (evidenciado por el tamaño de respuesta)
+   - Mayor consistencia en tiempos de respuesta
+
+2. La función demuestra un comportamiento eficiente de caché:
+   - Mantiene los resultados en memoria entre llamadas cercanas
+   - Proporciona respuestas más rápidas en llamadas subsecuentes
+
+
 
 **Preguntas**
 
